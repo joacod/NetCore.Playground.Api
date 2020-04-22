@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace NetCore.Playground.Api
 {
@@ -18,12 +19,32 @@ namespace NetCore.Playground.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
+
+            ConfigureSwaggerService(services);
+        }
+
+        private static void ConfigureSwaggerService(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo {
+                    Title = ".NetCore Web API Playground",
+                    Version = "v1",
+                    Description = "This is a playground Web API using .NetCore and Swagger"
+                });                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            ConfigureSwaggerApp(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -38,6 +59,18 @@ namespace NetCore.Playground.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+        }
+
+        private static void ConfigureSwaggerApp(IApplicationBuilder app)
+        {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                string swaggerJsonBasePath = string.IsNullOrWhiteSpace(c.RoutePrefix) ? "." : "..";
+                c.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "PlaygroundWebApi");
+                c.DisplayRequestDuration();
             });
         }
     }
