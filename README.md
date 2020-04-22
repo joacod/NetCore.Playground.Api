@@ -1,5 +1,5 @@
 # NetCore.Playground.Api
-.NetCore playground Web API
+.NetCore playground Web API using [Swagger](https://swagger.io/)
 
 <p align="center">
   <img height="200" src="https://miro.medium.com/max/313/1*Voh7k0_lP6wMJEApsqfKnA.png">
