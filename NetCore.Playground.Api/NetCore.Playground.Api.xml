@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCore.Playground.Api</name>
+    </assembly>
+    <members>
+        <member name="M:NetCore.Playground.Api.Controllers.ExamplesController.Get">
+            <summary>
+            Ping example
+            </summary>
+            <returns>pong</returns>
+        </member>
+        <member name="M:NetCore.Playground.Api.Controllers.LyricsController.Get(System.String,System.String)">
+            <summary>
+            Get lyrics from an Artist and a Song
+            </summary>
+            <param name="artist">Artist name</param>
+            <param name="song">Song name</param>
+            <returns>Lyrics of the song</returns>
+        </member>
+    </members>
+</doc>
