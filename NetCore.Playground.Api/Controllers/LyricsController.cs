@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NetCore.Playground.Api.Models;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Net.Http;
@@ -26,18 +27,16 @@ namespace NetCore.Playground.Api.Controllers
         {
             var apiURL = "https://api.lyrics.ovh/v1/" + artist + "/" + song;
             var textInfo = CultureInfo.CurrentCulture.TextInfo;
-            var lyrics = new SongLyrics
-            {
-                Artist = textInfo.ToTitleCase(artist),
-                SongTitle = textInfo.ToTitleCase(song),
-                Lyrics = ""
-            };
+            var lyrics = new SongLyrics();
 
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(apiURL);
             if (response.IsSuccessStatusCode)
             {
-                lyrics.Lyrics = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync();
+                lyrics = JsonConvert.DeserializeObject<SongLyrics>(content);
+                lyrics.Artist = textInfo.ToTitleCase(artist);
+                lyrics.SongTitle = textInfo.ToTitleCase(song);
             }
 
             return lyrics;

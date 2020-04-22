@@ -22,6 +22,15 @@ namespace NetCore.Playground.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200");
+                    });
+            });
+
             services.AddControllers()
             .AddJsonOptions(options =>
             {
@@ -61,6 +70,8 @@ namespace NetCore.Playground.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
