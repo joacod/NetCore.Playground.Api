@@ -3,7 +3,7 @@
 
 <p align="center">
   <img height="200" src="https://miro.medium.com/max/313/1*Voh7k0_lP6wMJEApsqfKnA.png">
-  <img height="200" src="https://lh3.googleusercontent.com/proxy/mQ2eiebBOI41rF5vYR3qQXGCxwQZQWfxFu12zJI0qPoUuEwTuZHskjsbpbDslEuzVfuplgPJ7t6Trws6pnjGc43-cwMSphXQaGsRxAW8iW9cUBCkA-d5nzVoQOE12mXy">
+  <img height="200" src="https://lh3.googleusercontent.com/proxy/cllFfKurrZ1WnPbQ2Aef3ClFSBx92GtVDZ58nqo8i4RS6O5xVGizH4bbNtqlo6CJssQtaT5TkHLzezQiBGO8YAeCWZxMAAByh9VlFoE1dOi69cB98loeg6lqiZJReKPS">
 </p>
 
 ## Notes
