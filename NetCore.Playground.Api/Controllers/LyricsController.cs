@@ -23,7 +23,7 @@ namespace NetCore.Playground.Api.Controllers
         /// <param name="song">Song name</param>
         /// <returns>Lyrics of the song</returns>
         [HttpGet("{artist}/{song}")]
-        public async Task<SongLyrics> Get([Required]string artist, [Required]string song)
+        public async Task<ActionResult> Get([Required]string artist, [Required]string song)
         {
             var apiURL = "https://api.lyrics.ovh/v1/" + artist + "/" + song;
             var textInfo = CultureInfo.CurrentCulture.TextInfo;
@@ -35,11 +35,19 @@ namespace NetCore.Playground.Api.Controllers
             {
                 var content = await response.Content.ReadAsStringAsync();
                 lyrics = JsonConvert.DeserializeObject<SongLyrics>(content);
-                lyrics.Artist = textInfo.ToTitleCase(artist);
-                lyrics.SongTitle = textInfo.ToTitleCase(song);
+                if (lyrics.Lyrics != string.Empty)
+                {
+                    lyrics.Artist = textInfo.ToTitleCase(artist);
+                    lyrics.SongTitle = textInfo.ToTitleCase(song);
+                }
+                else
+                {
+                    return NotFound("Lyrics not found.");
+                }
+                
             }
 
-            return lyrics;
+            return Ok(lyrics);
         }
 
     }
