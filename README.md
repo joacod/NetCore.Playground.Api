@@ -7,12 +7,12 @@
 </p>
 
 ## Notes
-The idea of this project is to provide all the apis that exists in my other repository [go-playground-api](https://github.com/joacod/go-playground-api)
+The idea of this project is to provide all the apis that exists in my other repositories [go-playground-api](https://github.com/joacod/go-playground-api) and [node-playground-api](https://github.com/joacod/node-playground-api)
 
 What we get from this:
 - We practice different approaches in .NetCore
-- We can compare **.NET Core** implementations with the same ones written in **Go**
-- We have two versions of the same Web Api written in different languages, that can be switched from a UI having the exact same results
+- We can compare **.NET Core** implementations with the same ones written in **Go** and **Node.js**
+- We have three versions of the same Web Api written in different languages, that can be switched from a UI having the exact same results
 
 I have created three UI projects to consume the APIs created here, you can use either of the following repositories:
 - [Angular Playground](https://github.com/joacod/angular-playground-ui)
