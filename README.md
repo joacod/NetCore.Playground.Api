@@ -14,9 +14,10 @@ What we get from this:
 - We can compare **.NET Core** implementations with the same ones written in **Go**
 - We have two versions of the same Web Api written in different languages, that can be switched from a UI having the exact same results
 
-I have created two UI projects to consume the APIs created here, you can use either of the following repositories:
+I have created three UI projects to consume the APIs created here, you can use either of the following repositories:
 - [Angular Playground](https://github.com/joacod/angular-playground-ui)
 - [Vue Playground](https://github.com/joacod/vue-playground-ui)
+- [React Playground](https://github.com/joacod/react-playground-ui)
 
 ## What you will find so far :heavy_check_mark:
 - [x] Web API created with .NET Core
